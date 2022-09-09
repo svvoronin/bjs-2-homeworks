@@ -67,7 +67,3 @@ function monthDiff(d1, d2) {
   months += d2.getMonth();
   return months <= 0 ? 0 : months;
 }
-
-//console.log(parseFloat("zj"));
-console.log(new Date("2025-01-01").getFullYear());
-console.log(calculateTotalMortgage(10, 1000, 50000, new Date(2023, 8, 1)));
