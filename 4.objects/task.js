@@ -26,7 +26,7 @@ Student.prototype.addMarks = function (...Marks) {
 
 Student.prototype.getAverage = function () {
   if (this.marks === undefined) {
-    return "No marks to average";
+    return "No marks to be averaged";
   } else {
     const average = this.marks.reduce((a, b) => a + b, 0) / this.marks.length;
     return average;
