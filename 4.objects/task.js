@@ -20,16 +20,13 @@ Student.prototype.addMarks = function (...Marks) {
   if (this.marks === undefined) {
     this.marks = Marks;
   } else {
-    this.marks.push(Marks);
+    this.marks.push(...Marks);
   }
 };
 
 Student.prototype.getAverage = function () {
-  if (this.marks === undefined) {
-    return "No marks to be averaged";
-  } else {
-    const average = this.marks.reduce((a, b) => a + b, 0) / this.marks.length;
-    return average;
+  if (this.marks !== undefined) {
+    return this.marks.reduce((a, b) => a + b, 0) / this.marks.length;
   }
 };
 
