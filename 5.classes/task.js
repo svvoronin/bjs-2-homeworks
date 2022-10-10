@@ -121,10 +121,55 @@ library.addBook(
   )
 );
 
-library.addBook(new NovelBook("Герберт Уэллс", "Машина времени", 1895, 138));
-library.addBook(new Magazine("Мурзилка", 1924, 60));
-console.log(library.findBookBy("name", "Властелин колец")); //null
-console.log(library.findBookBy("releaseDate", 1924).name); //"Мурзилка"
-console.log("Количество книг до выдачи: " + library.books.length); //Количество книг до выдачи: 4
-library.giveBookByName("Машина времени");
-console.log("Количество книг после выдачи: " + library.books.length); //Количество книг после выдачи: 3
+class Student {
+  constructor(name, gender, age) {
+    this.name = name;
+    this.gender = gender;
+    this.age = age;
+  }
+
+  addMark(grade, subject) {
+    if (grade < 1 || grade > 5) {
+      return console.log("Ошибка, оценка должна быть числом от 1 до 5");
+    }
+
+    if (this.marks === undefined) {
+      this.marks = [];
+      this.marks[subject] = [grade];
+    } else if (this.marks[subject] === undefined) {
+      this.marks[subject] = [grade];
+    } else {
+      this.marks[subject].push(grade);
+    }
+  }
+
+  getAverageBySubject(subject) {
+    if (this.marks === undefined || this.marks[subject] === undefined) {
+      return "Несуществующий предмет";
+    } else {
+      return (
+        this.marks[subject].reduce((a, b) => a + b, 0) /
+        this.marks[subject].length
+      );
+    }
+  }
+  getAverage() {
+    if (this.marks === undefined) {
+      return null;
+    } else {
+      let keys = Object.keys(student.marks);
+      let all_grades = [];
+      for (let i = 0; i < keys.length; i++) {
+        all_grades.push(...this.marks[keys[i]]);
+      }
+      return all_grades.reduce((a, b) => a + b, 0) / all_grades.length;
+    }
+  }
+
+  exclude(reason) {
+    if (this.marks !== undefined) {
+      delete this.marks;
+      this.excluded = reason;
+    }
+  }
+}
