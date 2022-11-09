@@ -30,7 +30,7 @@ class Triangle {
   }
 
   getArea() {
-    const semiPeriod = 0.5 * (this.a + this.b + this.c);
+    const semiPeriod = 0.5 * this.getPerimeter();
 
     return parseFloat(
       Math.sqrt(
@@ -58,3 +58,8 @@ function getTriangle(a, b, c) {
     return triangle;
   }
 }
+
+triangle = new Triangle(2, 2, 3);
+sq = triangle.getArea();
+
+console.log(sq);
