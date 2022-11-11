@@ -46,12 +46,14 @@ class AlarmClock {
   }
 
   start() {
-    this.intervalID = setInterval(() => {
-      let currentTime = this.getCurrentFormattedTime();
-      for (let i = 0; i < this.alarmCollection.length; i++) {
-        checkClock(this.alarmCollection[i], currentTime);
-      }
-    }, 1000);
+    if (this.intervalID == undefined) {
+      this.intervalID = setInterval(() => {
+        let currentTime = this.getCurrentFormattedTime();
+        for (let i = 0; i < this.alarmCollection.length; i++) {
+          checkClock(this.alarmCollection[i], currentTime);
+        }
+      }, 1000);
+    }
 
     function checkClock(alarmData, currentTime) {
       if (alarmData.time == currentTime) {
@@ -85,9 +87,9 @@ class AlarmClock {
 function testCase() {
   let clock;
   clock = new AlarmClock();
-  clock.addClock("22:10", () => console.log("Пора вставать"), 1);
+  clock.addClock("22:42", () => console.log("Пора вставать"), 1);
   clock.addClock(
-    "22:11",
+    "22:43",
     () => {
       console.log("Давай,вставай уже!");
       clock.removeClock(2);
@@ -95,7 +97,7 @@ function testCase() {
     2
   );
   clock.addClock(
-    "22:12",
+    "22:44",
     () => {
       console.log("Вставай,а то проспишь!");
       clock.clearAlarms();
